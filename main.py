@@ -7,7 +7,6 @@ import os
 import random
 
 today = datetime.now()
-start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
@@ -16,8 +15,6 @@ app_secret = os.environ["APP_SECRET"]
 
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
-
-print('参数:', app_id, app_secret, birthday, city, start_date, template_id, user_id)
 
 
 def get_weather():
@@ -34,12 +31,6 @@ def get_weather():
            weather['visibility'],\
            weather['air'],\
            weather['air_level']
-
-
-def get_count():
-    delta = today - datetime.strptime(start_date, "%Y-%m-%d")
-    return delta.days
-
 
 def get_birthday():
     print('get_birthday', birthday)
@@ -78,7 +69,6 @@ data = {
     "visibility": {"value": visibility,"color": '#1E90FF'}, #能见度
     "air": {"value": air,"color": '#1E90FF'}, #空气质量
     "air_level": {"value": air_level,"color": '#1E90FF'}, #空气质量等级
-    "love_days": {"value": get_count()},
     "birthday_left": {"value": get_birthday(), "color": get_random_color()}, # 生日
     "words": {"value": get_words(), "color": get_random_color()}
 }
