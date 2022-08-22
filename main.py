@@ -25,8 +25,8 @@ def get_weather():
     res = requests.get(url).json()
     weather = res['data'][0]
     return weather['wea'], \
-           math.floor(weather['tem1']) , \
-           math.floor(weather['tem2']), \
+           weather['tem1'], \
+           weather['tem2'], \
            weather['date'] + ' '+ weather['week'], \
            weather['win'][0],weather['win_speed'],\
            weather['win_meter'],\
